@@ -1,0 +1,104 @@
+{
+  "fields": [
+    {
+      "name": "repository_name",
+      "type": "string",
+      "description": "Name of the GitHub repository selected for contribution"
+    },
+    {
+      "name": "repository_url",
+      "type": "string",
+      "description": "GitHub repository URL"
+    },
+    {
+      "name": "issue_title",
+      "type": "string",
+      "description": "Title of the GitHub issue or contribution opportunity"
+    },
+    {
+      "name": "issue_url",
+      "type": "string",
+      "description": "URL of the GitHub issue if available"
+    },
+    {
+      "name": "contribution_type",
+      "type": "string",
+      "description": "Feature, bug fix, documentation, testing, refactoring, or other contribution type"
+    },
+    {
+      "name": "technologies",
+      "type": "string",
+      "description": "Programming languages, frameworks, libraries, and tools involved"
+    },
+    {
+      "name": "opportunity_reason",
+      "type": "string",
+      "description": "Why the opportunity matches the contributor's skills or interests"
+    },
+    {
+      "name": "issue_analysis",
+      "type": "string",
+      "description": "Summary of the issue requirements and repository context"
+    },
+    {
+      "name": "contribution_plan",
+      "type": "string",
+      "description": "Step-by-step proposed implementation plan"
+    },
+    {
+      "name": "proposed_changes",
+      "type": "string",
+      "description": "Code, documentation, tests, or other contribution material proposed by the agent"
+    },
+    {
+      "name": "validation_status",
+      "type": "string",
+      "description": "Validation result and verified facts, including anything requiring human review"
+    },
+    {
+      "name": "pr_title",
+      "type": "string",
+      "description": "Suggested pull request title"
+    },
+    {
+      "name": "pr_description",
+      "type": "string",
+      "description": "Draft pull request description"
+    },
+    {
+      "name": "testing_instructions",
+      "type": "string",
+      "description": "Tests or checks that should be performed before submission"
+    },
+    {
+      "name": "skills_demonstrated",
+      "type": "string",
+      "description": "Technical skills demonstrated by the proposed contribution"
+    },
+    {
+      "name": "impact",
+      "type": "string",
+      "description": "Expected contribution impact based only on available evidence"
+    },
+    {
+      "name": "portfolio_summary",
+      "type": "string",
+      "description": "Professional portfolio-ready description of the contribution"
+    },
+    {
+      "name": "readme_entry",
+      "type": "string",
+      "description": "Suggested README entry documenting the contribution"
+    },
+    {
+      "name": "changelog_entry",
+      "type": "string",
+      "description": "Suggested changelog entry"
+    },
+    {
+      "name": "improvement_suggestions",
+      "type": "string",
+      "description": "Suggestions for improving the contribution, project, or documentation"
+    }
+  ]
+}
