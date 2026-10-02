@@ -1,7 +1,7 @@
 
 
 ````markdown
-# 🚀 DevPortfolio Agent
+# 🚀 OpenPilot Agent
 
 > An AI-powered open-source contribution assistant that helps developers discover GitHub opportunities, understand issues, plan contributions, prepare Pull Request drafts, validate their work, and build professional portfolio material.
 
@@ -22,7 +22,7 @@ Developers often face questions such as:
 - How do I write a good Pull Request?
 - How can I document the contribution in my portfolio?
 
-**DevPortfolio Agent** is designed to help answer these questions through a structured AI workflow.
+**OpenPilot Agent** is designed to help answer these questions through a structured AI workflow.
 
 The agent takes a developer from **finding an opportunity to preparing a contribution and documenting the verified work**.
 
@@ -41,13 +41,13 @@ Many developers want to contribute to open source but struggle with:
 - Writing Pull Request descriptions
 - Presenting contributions professionally in a portfolio
 
-DevPortfolio Agent aims to reduce this friction by providing a structured contribution workflow.
+OpenPilot Agent aims to reduce this friction by providing a structured contribution workflow.
 
 ---
 
 ## 💡 Solution
 
-DevPortfolio Agent combines open-source opportunity discovery, repository and issue analysis, contribution planning, contribution generation, validation, and portfolio generation into one workflow.
+OpenPilot Agent combines open-source opportunity discovery, repository and issue analysis, contribution planning, contribution generation, validation, and portfolio generation into one workflow.
 
 ```text
 Developer Skills & Interests
@@ -88,7 +88,7 @@ Developer Skills & Interests
 
 ## 🏗️ How It Works
 
-DevPortfolio Agent uses a structured AI workflow with web search to discover and analyze open-source opportunities.
+OpenPilot Agent uses a structured AI workflow with web search to discover and analyze open-source opportunities.
 
 The agent prepares contribution material for human review rather than claiming that a contribution has been submitted or merged.
 
@@ -110,7 +110,7 @@ The agent helps them:
 
 ## 🌐 Live Demo
 
-### 🚀 Try DevPortfolio Agent
+### 🚀 Try OpenPilot Agent
 
 **[Open the Live Agent](YOUR_PUBLIC_AGENT_LINK)**
 
@@ -121,7 +121,7 @@ The agent helps them:
 ## 📁 Project Structure
 
 ```text
-devportfolio-agent/
+OpenPilot-agent/
 ├── README.md
 ├── CONTRIBUTING.md
 └── agent/
