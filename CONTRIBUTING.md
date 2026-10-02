@@ -1,8 +1,8 @@
-# Contributing to DevPortfolio Agent
+# Contributing to OpenPilot Agent
 
 Contributions are welcome!
 
-DevPortfolio Agent is designed to help developers discover open-source opportunities, prepare contributions, validate their work, and create portfolio-ready documentation.
+OpenPilot Agent is designed to help developers discover open-source opportunities, prepare contributions, validate their work, and create portfolio-ready documentation.
 
 ## Ways to contribute
 
