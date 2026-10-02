@@ -1,7 +1,11 @@
 from utils.scoring import calculate_issue_score
 
 
-def rank_issues(issues, skills):
+def rank_issues(issues, skills, repository=None):
+    """
+    Score every GitHub issue and return them
+    from highest match to lowest match.
+    """
 
     ranked = []
 
@@ -9,22 +13,18 @@ def rank_issues(issues, skills):
 
         result = calculate_issue_score(
             issue,
-            skills
+            skills,
+            repository
         )
 
         ranked.append({
             "issue": issue,
-            "score": result["score"],
-            "matched_skills": result["matched_skills"],
-            "beginner_labels": result["beginner_labels"],
-            "skill_score": result["skill_score"],
-            "beginner_score": result["beginner_score"],
-            "activity_score": result["activity_score"],
-            "description_score": result["description_score"]
+            **result
         })
 
-    return sorted(
-        ranked,
+    ranked.sort(
         key=lambda item: item["score"],
         reverse=True
     )
+
+    return ranked

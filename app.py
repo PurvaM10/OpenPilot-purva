@@ -920,7 +920,6 @@ def analyze_repository():
                 owner,
                 repo
             )
-
             st.write("✓ Repository information fetched")
 
             st.write("Fetching open issues...")
@@ -929,7 +928,7 @@ def analyze_repository():
                 owner,
                 repo
             )
-
+            
             st.write(
                 f"✓ Found {len(issues)} open issues"
             )
@@ -939,9 +938,10 @@ def analyze_repository():
             )
 
             ranked = rank_issues(
-                issues,
-                st.session_state.skills
-            )
+            issues,
+            st.session_state.skills,
+            repository
+        )
 
             st.write(
                 "✓ Match scores calculated"
