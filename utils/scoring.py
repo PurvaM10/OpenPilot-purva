@@ -1,51 +1,85 @@
 def calculate_issue_score(issue, skills):
-    """
-    Calculate an explainable match score between
-    a GitHub issue and a developer's skills.
-    """
-
-    skills = [
-        skill.lower().strip()
-        for skill in skills
-        if skill.strip()
-    ]
+    skills = [skill.lower().strip() for skill in skills if skill.strip()]
 
     title = (issue.get("title") or "").lower()
     body = (issue.get("body") or "").lower()
-
     labels = [
-        label["name"].lower()
+        label.get("name", "").lower()
         for label in issue.get("labels", [])
     ]
 
-    searchable_text = (
-        title + " " + body + " " + " ".join(labels)
-    )
+    searchable_text = f"{title} {body} {' '.join(labels)}"
+
+    # Common aliases / related terms
+    skill_aliases = {
+        "python": [
+            "python",
+            ".py",
+        ],
+        "streamlit": [
+            "streamlit",
+            "streamlit runtime",
+            "streamlit app",
+            "st.",
+            "st_",
+        ],
+        "github": [
+            "github",
+            "github api",
+        ],
+        "pandas": [
+            "pandas",
+            "pd.",
+        ],
+        "numpy": [
+            "numpy",
+            "np.",
+        ],
+        "sql": [
+            "sql",
+            "sqlite",
+            "postgresql",
+            "mysql",
+        ],
+        "javascript": [
+            "javascript",
+            "typescript",
+            "js",
+            "tsx",
+            "jsx",
+        ],
+        "typescript": [
+            "typescript",
+            "tsx",
+        ],
+    }
+
+    # -------------------------
+    # 1. Skill relevance - 60%
+    # -------------------------
 
     matched_skills = []
 
     for skill in skills:
-        if skill in searchable_text:
+        aliases = skill_aliases.get(skill, [skill])
+
+        if any(alias in searchable_text for alias in aliases):
             matched_skills.append(skill)
 
-    # -----------------------------
-    # Skill Match
-    # -----------------------------
+    if skills:
+        skill_score = (len(matched_skills) / len(skills)) * 60
+    else:
+        skill_score = 0
 
-    skill_score = min(
-        len(matched_skills) * 15,
-        45
-    )
-
-    # -----------------------------
-    # Beginner-Friendly Labels
-    # -----------------------------
+    # -------------------------
+    # 2. Beginner friendliness - 15%
+    # -------------------------
 
     beginner_labels = {
         "good first issue",
         "beginner",
         "easy",
-        "help wanted"
+        "help wanted",
     }
 
     beginner_matches = [
@@ -55,50 +89,55 @@ def calculate_issue_score(issue, skills):
     ]
 
     beginner_score = min(
-        len(beginner_matches) * 10,
-        20
+        len(beginner_matches) * 7.5,
+        15
     )
 
-    # -----------------------------
-    # Activity
-    # -----------------------------
+    # -------------------------
+    # 3. Issue activity - 10%
+    # -------------------------
 
-    activity_score = 5 if issue.get(
-        "comments", 0
-    ) > 0 else 0
+    comments = issue.get("comments", 0)
 
-    # -----------------------------
-    # Issue Description Quality
-    # -----------------------------
+    if comments >= 10:
+        activity_score = 10
+    elif comments > 0:
+        activity_score = 5
+    else:
+        activity_score = 0
+
+    # -------------------------
+    # 4. Description quality - 15%
+    # -------------------------
 
     description_score = 0
 
-    if body:
+    if len(body) > 100:
+        description_score += 7.5
 
-        if len(body) > 100:
-            description_score += 5
+    if len(body) > 300:
+        description_score += 7.5
 
-        if len(body) > 300:
-            description_score += 5
+    # -------------------------
+    # Final score
+    # -------------------------
 
-    # -----------------------------
-    # Final Score
-    # -----------------------------
-
-    total_score = min(
-        skill_score
-        + beginner_score
-        + activity_score
-        + description_score,
-        100
+    total_score = round(
+        min(
+            skill_score
+            + beginner_score
+            + activity_score
+            + description_score,
+            100,
+        )
     )
 
     return {
         "score": total_score,
         "matched_skills": matched_skills,
         "beginner_labels": beginner_matches,
-        "skill_score": skill_score,
-        "beginner_score": beginner_score,
+        "skill_score": round(skill_score),
+        "beginner_score": round(beginner_score),
         "activity_score": activity_score,
-        "description_score": description_score
+        "description_score": round(description_score),
     }
